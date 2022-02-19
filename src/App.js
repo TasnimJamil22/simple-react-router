@@ -1,23 +1,73 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from './Components/Home/Home';
+import Friends from './Components/Friends/Friends';
+import About from './Components/About/About';
+import NotFound from './Components/NotFound/NotFound';
+import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
+import Header from './Components/Header/Header';
+// import FriendDetail from './Components/FriendDetail/FriendDetail';
+import Culture from './Components/Culture/Culture';
+import Detail from './Components/Detail/Detail';
+ 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+
+        <Header></Header>
+      <Switch>
+           <Route exact path='/'>
+           <Home></Home>
+           </Route>
+           <Route path='/home'>
+           <Home></Home>
+           </Route>
+           <Route path='/friends'>
+           <Friends></Friends>
+           </Route>
+           <Route path='/friend/:friendId'>
+            <Detail></Detail>
+          </Route>
+           <Route exact path='/about'>
+           <About></About>
+           </Route>
+           <Route exact path='/about/culture'>
+             <Culture></Culture>
+
+           </Route>
+           <Route path='*'>
+           <NotFound></NotFound>
+           </Route>
+         </Switch>
+         </Router>
+
+
+
+{/* <BrowserRouter>
+         <Switch>
+           <Route path='/home'>
+           <Home></Home>
+           </Route>
+           <Route path='/friends'>
+           <Friends></Friends>
+           </Route>
+           <Route path='/about'>
+           <About></About>
+           </Route>
+           <Route exact path='/'>
+           <Home></Home>
+           </Route>
+           <Route>
+           <NotFound></NotFound>
+           </Route>
+         </Switch>
+      </BrowserRouter> */}
+       {/* <Home></Home>
+       <Friends></Friends>
+       <About></About>
+       <NotFound></NotFound> */}
     </div>
   );
 }
